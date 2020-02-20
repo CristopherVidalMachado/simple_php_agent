@@ -40,10 +40,9 @@ function mostarMatrizGramaComFormigueiros($array)
 
 
 
-// print_r(getTotalFormigueiros());
 
 
-function aaa($array)
+function mostrarComAsterisco($array)
 {
     // echo '<pre>';
 
@@ -212,12 +211,12 @@ $array = adicionaFormigueiros($matrizGrama);
 // $array = $matrizGrama;
 mostarMatrizGramaComFormigueiros($array);
 
-echo "-------------\n";
-$array[0] = [1, 1,3,1];
-$array[1] = [1, 1,1,1];
-$array[2] = [1, 1,1,1];
-$array[3] = [1, 1,1,1];
-aaa($array);
+// echo "-------------\n";
+// $array[0] = [1, 3,1 ,1];
+// $array[1] = [1, 1,1,1];
+// $array[2] = [1, 1,1,1];
+// $array[3] = [1, 1,1,3];
+// mostrarComAsterisco($array);
 
 
 if ($array[0][0] == 1) {
@@ -225,74 +224,63 @@ if ($array[0][0] == 1) {
     $linha = 0;
 
     while (1 == 1) {
-        
         $array[$linha][$coluna] = 0;
-
+        print_r("$linha:  $coluna \n");
         if (irDireita($array[$linha], $coluna) == 1) {
             print_r("direita \n");
             $coluna++;
             continue;
         }
-        elseif (DiagonalBaixaDireita($array, $linha, $coluna) == 1 ) {
-            print("Diagonal baixa direita\n");
-            $linha++;
-            $coluna++;
+        // elseif (DiagonalAltaDireita($array, $linha, $coluna) == 1) {
+        //     print("Diagonal alta direita\n");
+            
+        //     $linha--;
+        
+        //     $coluna++;
+        //     continue;
+        // }  
+        // elseif (DiagonalBaixaDireita($array, $linha, $coluna) == 1) {
+        //     print("Diagonal baixa direita\n");
+        //     $linha++;
+        //     $coluna++;
+        //     continue;
+        // } 
+        elseif (irEsquerda($array[$linha], $coluna) == 1) {
+            print_r("esquerda\n");
+         
+            $coluna--;
             continue;
-        }
-
-        elseif (DiagonalAltaDireita($array, $linha, $coluna) == 1)  {
-            print("Diagonal alta direita\n");
-            if($linha > 0)
-                $linha--;
-           
-            $coluna++;
-            continue;
-        }
-        elseif (irBaixo($array, $linha, $coluna) == 1 )  {
+        } elseif (irBaixo($array, $linha, $coluna) == 1) {
             print_r("baixo\n");
             $linha++;
             continue;
-        }
-
-        elseif (irEsquerda($array[$linha], $coluna) == 1) {
-            print_r("esquerda\n");
-            if($coluna >0)
-                $coluna--;
-            continue;
-        }
-        elseif (diagonalAltaEsquerda($array, $linha, $coluna) == 1) {
-            print("Diagonal alta esquerda\n");
-            if($linha >0)
-                $linha--;
-            if($coluna >0)
-                $coluna--;
-                continue;
-        }
-
-        elseif(diagonalBaixaEsquerda($array, $linha, $coluna) == 1 && irBaixo($array, $linha, $coluna) != 1){
-            print("Diagonal baixa esquerda\n");
-            $coluna--;
-            $linha++;
-            continue;
-
-        }
-
-        elseif (irCima($array, $linha, $coluna) == 1) {
+        } elseif (irCima($array, $linha, $coluna) == 1) {
             print_r("cima\n");
-            if($coluna > 0)
-                $coluna--;
+            
+            $linha--;
             continue;
         }
+        // elseif (diagonalAltaEsquerda($array, $linha, $coluna) == 1) {
+        //     print("Diagonal alta esquerda\n");
+            
+        //     $linha--;
+         
+        //     $coluna--;
+        //     continue;
+        // } elseif (diagonalBaixaEsquerda($array, $linha, $coluna) == 1) {
+        //     print("Diagonal baixa esquerda\n");
+        //     $coluna--;
+        //     $linha++;
+        //     continue;
+        // }
+
+        
         break;
     }
 
     echo "\n";
 
     // }
-
 }
 
 mostarMatrizGramaComFormigueiros($array);
-
-
-
